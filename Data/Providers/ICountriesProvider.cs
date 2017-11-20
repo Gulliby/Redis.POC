@@ -5,8 +5,8 @@ namespace Data.Providers
 {
     public interface ICountriesProvider
     {
-        int SaveCountry(CountryDb country);
-        CountryDb GetCountry(int countryId);
-        IEnumerable<CountryDb> GetCountries();
+        void Save(CountryDb country);
+        CountryDb GetById(int countryId);
+        IEnumerable<CountryDb> GetAll();
     }
 }

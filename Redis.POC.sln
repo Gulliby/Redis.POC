@@ -21,8 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{F04D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching", "Caching\Caching.csproj", "{A3D21BAB-1B8F-4FC3-8B1A-2F49D5ED6BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Common", "Infrastructure.Common\Infrastructure.Common.csproj", "{6E566FE7-9B59-4642-98CF-593494CD76C8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{A3D21BAB-1B8F-4FC3-8B1A-2F49D5ED6BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D21BAB-1B8F-4FC3-8B1A-2F49D5ED6BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3D21BAB-1B8F-4FC3-8B1A-2F49D5ED6BC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E566FE7-9B59-4642-98CF-593494CD76C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E566FE7-9B59-4642-98CF-593494CD76C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E566FE7-9B59-4642-98CF-593494CD76C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E566FE7-9B59-4642-98CF-593494CD76C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

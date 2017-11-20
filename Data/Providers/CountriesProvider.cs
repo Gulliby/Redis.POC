@@ -13,25 +13,21 @@ namespace Data.Providers
             _unitOfWork = unitOfWork;
         }
 
-        public CountryDb GetCountry(int contryId)
+        public CountryDb GetById(int contryId)
         {
             return _unitOfWork.Repository<CountryDb>()
                 .FindAll()
                 .FirstOrDefault(q => q.CountryId == contryId);
         }
 
-        public IEnumerable<CountryDb> GetCountries()
+        public IEnumerable<CountryDb> GetAll()
         {
             return _unitOfWork.Repository<CountryDb>().FindAll();
         }
 
-        public int SaveCountry(CountryDb country)
+        public void Save(CountryDb country)
         {
-            var repository = _unitOfWork.Repository<CountryDb>();
-
-            var entity = repository.Add(country);
-
-            return entity.CountryId;
+            _unitOfWork.Repository<CountryDb>().Add(country);
         }
     }
 }

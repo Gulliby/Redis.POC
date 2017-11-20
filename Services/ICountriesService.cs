@@ -7,7 +7,7 @@ namespace Services
     {
         CountryEntity GetCountry(int contryId);
 
-        int SaveCountry(CountryEntity country);
+        void SaveCountry(CountryEntity country);
 
         IEnumerable<CountryEntity> GetCountries();
     }

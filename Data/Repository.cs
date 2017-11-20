@@ -29,9 +29,9 @@ namespace Data
             return navigations.Aggregate(query, (current, navigation) => current.Include(navigation)).AsNoTracking();
         }
 
-        public TEntity Add(TEntity entity)
+        public void Add(TEntity entity)
         {
-            return _dbSet.Add(entity);
+            _dbSet.Add(entity);
         }
 
         public void Update(TEntity entity)

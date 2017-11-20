@@ -166,17 +166,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{1ab8d382-7b12-417e-a189-742ce1cc0180}</Project>
       <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure.Common\Infrastructure.Common.csproj">
-      <Project>{6E566FE7-9B59-4642-98CF-593494CD76C8}</Project>
-      <Name>Infrastructure.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{86be8771-4a3e-4646-a832-1214977a3485}</Project>

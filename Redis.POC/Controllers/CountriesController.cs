@@ -25,7 +25,8 @@ namespace Redis.POC.Controllers
 
         public HttpResponseMessage Post(CountryEntity countryEntity)
         {
-            return Ok(_countriesService.SaveCountry(countryEntity));
+            _countriesService.SaveCountry(countryEntity);
+            return Created();
         }
     }
 }

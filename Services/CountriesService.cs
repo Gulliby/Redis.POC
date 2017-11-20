@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Caching;
-using Caching.Providers;
 using Entities;
 using Data.Entities;
+using Caching.Providers;
+using Data.Providers;
 
 namespace Services
 {
     public class CountriesService : ICountriesService
     {
-        private readonly ICountiesCachingProvider _countiesCachingProvider;
+        private readonly ICountriesProvider _countriesProvider;
 
-        public CountriesService(ICountiesCachingProvider countiesCachingProvider)
+        public CountriesService(ICountriesProvider countriesProvider)
         {
-            _countiesCachingProvider = countiesCachingProvider;
+            _countriesProvider = countriesProvider;
         }
 
         public CountryEntity GetCountry(int contryId)
         {
-            var county = _countiesCachingProvider.GetCountry(contryId);
+            var county = _countriesProvider.GetById(contryId);
 
             return new CountryEntity
             {
@@ -29,9 +29,9 @@ namespace Services
             };
         }
 
-        public int SaveCountry(CountryEntity country)
+        public void SaveCountry(CountryEntity country)
         {
-            return _countiesCachingProvider.SaveCountry(
+            _countriesProvider.Save(
                 new CountryDb
                 {
                    CountryId = country.CountryId,
@@ -43,7 +43,7 @@ namespace Services
 
         public IEnumerable<CountryEntity> GetCountries()
         {
-            return _countiesCachingProvider.GetCountries().Select(country => 
+            return _countriesProvider.GetAll().Select(country => 
                 new CountryEntity
                 {
                     CountryId = country.CountryId,

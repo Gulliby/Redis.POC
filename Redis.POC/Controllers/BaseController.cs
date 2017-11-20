@@ -10,5 +10,10 @@ namespace Redis.POC.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, obj);
         }
+
+        public HttpResponseMessage Created()
+        {
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
     }
 }

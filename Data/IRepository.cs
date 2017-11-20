@@ -8,7 +8,7 @@ namespace Data
     {
         IQueryable<TEntity> FindAll(params Expression<Func<TEntity, object>>[] navigations);
 
-        TEntity Add(TEntity entity);
+        void Add(TEntity entity);
 
         void Update(TEntity entity);
 

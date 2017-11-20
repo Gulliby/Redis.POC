@@ -1,7 +1,7 @@
 ﻿using Data;
 using System;
 using System.Configuration;
-using Caching;
+using Caching.Helpers;
 using Caching.Providers;
 using Data.Providers;
 using Unity;
@@ -16,21 +16,38 @@ namespace Services.Configuration
         {
             container = Caching.Configuration.UnityConfiguration.Apply(container);
 
-            container.RegisterUnitOfWork(() => new HierarchicalLifetimeManager());
+            container.RegisterUnitOfWork(() => new HierarchicalLifetimeManager())
+                .RegisterDataProviders();
+
+            container.RegisterType<ICountriesService>(new PerResolveLifetimeManager(), new InjectionFactory(CreateCountriesService));
+
+            return container;
+        }
+
+        private static IUnityContainer RegisterDataProviders(this IUnityContainer container)
+        {
             container.RegisterType<ICountriesProvider, CountriesProvider>(new PerResolveLifetimeManager());
-            container.RegisterType<ICountiesCachingProvider, CountriesCachingProvider>(new PerResolveLifetimeManager());
 
             return container;
         }
 
         private static IUnityContainer RegisterUnitOfWork(this IUnityContainer container, Func<LifetimeManager> lifetimeManagerCreator)
         {
-            var authenticationConnectionString = ConfigurationManager.ConnectionStrings["Database"]?.ConnectionString;
+            var databaseConnectionString = ConfigurationManager.ConnectionStrings["Database"]?.ConnectionString;
 
             container.RegisterType<IUnitOfWork, UnitOfWork<CustomDbContext>>(lifetimeManagerCreator());
-            container.RegisterType<CustomDbContext>(lifetimeManagerCreator(), new InjectionConstructor(authenticationConnectionString));
+            container.RegisterType<CustomDbContext>(lifetimeManagerCreator(), new InjectionConstructor(databaseConnectionString));
 
             return container;
+        }
+
+
+        private static ICountriesService CreateCountriesService(this IUnityContainer unityContainer)
+        {
+            return new CountriesService(new CachedCountriesProvider(
+                unityContainer.Resolve(typeof(ICountriesProvider)) as ICountriesProvider,
+                unityContainer.Resolve(typeof(ICachingProvider)) as ICachingProvider,
+                unityContainer.Resolve(typeof(ICacheKeyBuilder)) as ICacheKeyBuilder));
         }
     }
 }
