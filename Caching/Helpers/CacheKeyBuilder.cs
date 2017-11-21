@@ -6,8 +6,11 @@ namespace Caching.Helpers
     {
         public string Build<T>(params string[] args)
         {
-            var paramResult = args.Length > 0 ? args.Aggregate((prev, current) => prev + ' ' + current) : string.Empty;
-            return $"{typeof(T)}{paramResult}";
+            var paramResult = args.Length > 0
+                ? args.Aggregate((prev, current) => prev + ' ' + current)
+                : string.Empty;
+
+            return $"{typeof(T)} {paramResult}".TrimEnd(' ');
         }
     }
 }

@@ -29,12 +29,12 @@ namespace Caching.Providers
 
         public CountryDb GetById(int countryId)
         {
-            return  _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(countryId.ToString()), () => _countriesProvider.GetById(countryId));
+            return  _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(countryId.ToString(), nameof(_countriesProvider.GetById)), () => _countriesProvider.GetById(countryId));
         }
 
         public IEnumerable<CountryDb> GetAll()
         {
-            return _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(), () => _countriesProvider.GetAll());
+            return _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(nameof(_countriesProvider.GetAll)), () => _countriesProvider.GetAll());
         }
     }
 }
