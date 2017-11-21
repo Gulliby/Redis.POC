@@ -34,16 +34,16 @@ namespace Services
             _countriesProvider.Save(
                 new CountryDb
                 {
-                   CountryId = country.CountryId,
-                   Country = country.Country,
-                   Description = country.Description,
-                   Wipo = country.Wipo
+                    CountryId = country.CountryId,
+                    Country = country.Country,
+                    Description = country.Description,
+                    Wipo = country.Wipo
                 });
         }
 
         public IEnumerable<CountryEntity> GetCountries()
         {
-            return _countriesProvider.GetAll().Select(country => 
+            return _countriesProvider.GetAll().Select(country =>
                 new CountryEntity
                 {
                     CountryId = country.CountryId,

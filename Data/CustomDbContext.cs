@@ -18,6 +18,7 @@ namespace Data
             modelBuilder.HasDefaultSchema("dbo");
 
             modelBuilder.Configurations.Add(new CountriesMapping());
+            modelBuilder.Configurations.Add(new CodesMapping());
         }
     }
 }

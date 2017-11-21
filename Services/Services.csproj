@@ -84,8 +84,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodesService.cs" />
     <Compile Include="Configuration\UnityConfiguration.cs" />
     <Compile Include="CountriesService.cs" />
+    <Compile Include="ICodesService.cs" />
     <Compile Include="ICountriesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

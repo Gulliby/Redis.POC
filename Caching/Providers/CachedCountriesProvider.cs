@@ -23,18 +23,18 @@ namespace Caching.Providers
 
         public void Save(CountryDb country)
         {
-            _cachingProvider.Remove(_cacheKeyBuilder.Build<CountryDb>());
+            _cachingProvider.Remove(_cacheKeyBuilder.Build<CountryDb>(nameof(ICountriesProvider.GetAll)));
             _countriesProvider.Save(country);
         }
 
         public CountryDb GetById(int countryId)
         {
-            return  _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(countryId.ToString(), nameof(_countriesProvider.GetById)), () => _countriesProvider.GetById(countryId));
+            return  _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(countryId.ToString(), nameof(ICountriesProvider.GetById)), () => _countriesProvider.GetById(countryId));
         }
 
         public IEnumerable<CountryDb> GetAll()
         {
-            return _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(nameof(_countriesProvider.GetAll)), () => _countriesProvider.GetAll());
+            return _cachingProvider.GetOrUpdate(_cacheKeyBuilder.Build<CountryDb>(nameof(ICountriesProvider.GetAll)), () => _countriesProvider.GetAll());
         }
     }
 }

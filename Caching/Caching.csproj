@@ -88,6 +88,7 @@
     <Compile Include="Extensions\CachingServicesExtensions.cs" />
     <Compile Include="Helpers\CacheKeyBuilder.cs" />
     <Compile Include="Helpers\ICacheKeyBuilder.cs" />
+    <Compile Include="Providers\CachedCodesProvider.cs" />
     <Compile Include="Services\ICachingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CachingProvider.cs" />
